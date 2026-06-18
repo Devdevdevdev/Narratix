@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes pulse-bg {
+  0% {
+    background-color: #4A5568; /* gray-700 */
+  }
+  50% {
+    background-color: #9B2C2C; /* red-700 */
+  }
+  100% {
+    background-color: #4A5568; /* gray-700 */
+  }
+}
+
+.animate-pulse-bg {
+  animation: pulse-bg 0.8s ease-in-out;
+}
+
+/* Base light/dark theme defaults */
+@layer base {
+  body {
+    @apply bg-white text-slate-900;
+  }
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
