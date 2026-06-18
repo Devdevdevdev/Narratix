@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import logo from './assets/LOGO.png';
+import { allTones, toneCategories } from './tones';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5000';
 
@@ -9,19 +10,6 @@ const PLATFORMS = {
   FACEBOOK: 'Facebook',
   REDDIT: 'Reddit',
 };
-
-const TONES = [
-  'Professionnel',
-  'Inspirant',
-  'Conversationnel',
-  'Direct',
-  'Pédagogique',
-  'Créatif',
-  'Humoristique',
-  'Persuasif',
-  'Informatif',
-  'Authentique',
-];
 
 const LENGTHS = {
   TWITTER: {
@@ -62,7 +50,7 @@ function App() {
   const [platform, setPlatform] = useState('TWITTER');
   const [contentType, setContentType] = useState('generate');
   const [length, setLength] = useState('short');
-  const [tone, setTone] = useState('Professionnel');
+  const [tone, setTone] = useState('professionnel');
   const [language, setLanguage] = useState('fr');
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState('');
@@ -185,7 +173,7 @@ function App() {
     setPlatform('TWITTER');
     setContentType('generate');
     setLength('short');
-    setTone('Professionnel');
+    setTone('professionnel');
   };
 
   return (
@@ -303,15 +291,23 @@ function App() {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium" htmlFor="tone">Ton</label>
+                <label className="mb-2 block text-sm font-medium" htmlFor="tone">Ton ({allTones.length})</label>
                 <select
                   id="tone"
                   value={tone}
                   onChange={(event) => setTone(event.target.value)}
                   className="w-full rounded border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950"
                 >
-                  {TONES.map((toneOption) => (
-                    <option key={toneOption} value={toneOption}>{toneOption}</option>
+                  {Object.entries(toneCategories).map(([category, groups]) => (
+                    <optgroup key={category} label={category}>
+                      {Object.entries(groups).flatMap(([group, tones]) => (
+                        tones.map((toneOption) => (
+                          <option key={`${category}-${group}-${toneOption}`} value={toneOption}>
+                            {toneOption}
+                          </option>
+                        ))
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
               </div>

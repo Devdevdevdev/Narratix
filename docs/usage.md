@@ -4,7 +4,7 @@
 2. Start the frontend.
 3. Open `http://localhost:5173`.
 4. Paste your DeepSeek API key, unless it is already configured in `backend/.env`.
-5. Choose a platform, content type, length and tone.
+5. Choose a platform, content type, length and one of the restored Narratix tones.
 6. Enter a brief or a post to answer.
 7. Click "Générer le contenu".
 

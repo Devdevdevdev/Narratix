@@ -11,6 +11,7 @@ It runs on your machine, does not require an account, and does not include payme
 - DeepSeek chat generation.
 - Platforms: Twitter/X, LinkedIn, Facebook, Reddit.
 - Content modes: generate a post or write a reply.
+- 75 restored Narratix tones, grouped by category.
 - Tone and length controls.
 - Local generation history in the browser.
 - Optional dark mode.
